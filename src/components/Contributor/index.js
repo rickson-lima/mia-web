@@ -4,11 +4,13 @@ import dayjs from "dayjs";
 function Contributor({ data, id }) {
   const [createdAt, setCreatedAt] = useState(data.createdAt);
   const [updatedAt, setUpdatedAt] = useState(data.updatedAt);
+  const [status, setStatus] = useState();
+
   const [contributor, setContributor] = useState([]);
 
   function formatTimestamps() {
-    setCreatedAt(dayjs(createdAt).format("DD/MM/YYYY"));
-    setUpdatedAt(dayjs(updatedAt).format("DD/MM/YYYY"));
+    setCreatedAt(dayjs(createdAt).format("DD/MM/YYYY HH:m:s"));
+    setUpdatedAt(dayjs(updatedAt).format("DD/MM/YYYY HH:m:s"));
   }
 
   useEffect(() => {
@@ -19,6 +21,8 @@ function Contributor({ data, id }) {
     delete data.createdAt;
     delete data.updatedAt;
     delete data.__v;
+    setStatus(data.status.percentage);
+    delete data.status;
 
     Array(data).forEach((obj) => {
       for (const key in obj) {
@@ -43,6 +47,7 @@ function Contributor({ data, id }) {
         );
       })}
 
+      <td>{status}</td>
       <td>{createdAt}</td>
       <td>{updatedAt}</td>
     </tr>

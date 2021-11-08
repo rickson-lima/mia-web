@@ -65,7 +65,7 @@ function TableHeaderItems() {
     "ID",
     "CPF",
     "Nome",
-    "Status",
+    "Data de Nascimento",
     "Email",
     "Telefone",
     "CEP",
@@ -73,7 +73,7 @@ function TableHeaderItems() {
     "UF",
     "Bairro",
     "Logradouro",
-    "Número",
+    "Status",
     "Criado em",
     "Atualizado em",
   ]);
